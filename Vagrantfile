@@ -28,8 +28,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "docker" do |d|
     d.pull_images "blackanger/my-mysql-server"
-    d.pull_images "tutum/centos"
     d.pull_images "dockerfile/elasticsearch"
+    d.pull_images "tutum/centos"
   end
 
   config.vm.provision :shell, path: "bootstrap.sh"
