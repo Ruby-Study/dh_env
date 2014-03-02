@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
 
 
   #mysql
-  config.vm.network :forwarded_port, guest: 3306, host: 3306
+  config.vm.network :forwarded_port, guest: 49153, host: 3306
 
 
   config.vm.provider :virtualbox do |vb|
