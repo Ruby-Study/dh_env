@@ -29,7 +29,13 @@ Vagrant.configure("2") do |config|
   config.vm.provision "docker" do |d|
     d.pull_images "blackanger/my-mysql-server"
     d.pull_images "dockerfile/elasticsearch"
-    d.pull_images "tutum/centos"
+    #d.pull_images "tutum/centos"
+
+    #run
+    #sudo docker run -d -p 3306 -name mysql blackanger/my-mysql-server /run.sh
+    # d.run "blackanger/my-mysql-server",
+    #   cmd: "/run.sh",
+    #   args: "-d -p 3306 -name mysql"
   end
 
   config.vm.provision :shell, path: "bootstrap.sh"
