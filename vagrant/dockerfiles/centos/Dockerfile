@@ -26,7 +26,6 @@ RUN gem install bundle --no-ri --no-rdoc
 RUN gem install goliath
 
 
-
 # Configure my repo to use my custom Nginx with modsec
 # ADD http://static.theroux.ca/repository/failshell.repo /etc/yum.repos.d/
 
