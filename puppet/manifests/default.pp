@@ -26,6 +26,29 @@ class { 'apt_get_update':
 package { ['sqlite3', 'libsqlite3-dev']:
   ensure => installed;
 }
+# --- Packages -----------------------------------------------------------------
+
+package { 'curl':
+  ensure => installed
+}
+
+package { 'build-essential':
+  ensure => installed
+}
+
+package { 'git-core':
+  ensure => installed
+}
+
+# Nokogiri dependencies.
+package { ['libxml2', 'libxml2-dev', 'libxslt1-dev']:
+  ensure => installed
+}
+
+# ExecJS runtime.
+package { 'nodejs':
+  ensure => installed
+}
 
 
 # --- Ruby ---------------------------------------------------------------------

@@ -1,3 +1,4 @@
 .vagrant/
 vagrant/db
+vagrant/apps
 .DS_Store

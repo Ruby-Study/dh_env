@@ -36,6 +36,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "docker" do |d|
     d.pull_images "blackanger/my-mysql-server"
     # d.pull_images "blackanger/elasticsearch"
+    # d.pull_images "blackanger/memcached"
     # build
 
   end

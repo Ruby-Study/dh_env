@@ -31,6 +31,13 @@ fi
 #   sudo docker run -d -p 9200:9200 -p 9300:9300 -name elastics blackanger/elasticsearch
 # fi
 
+
+# init memcached
+# MEMCACHED=`sudo docker ps|grep blackanger/memcached|awk '{print$1}'`
+# if [ -z "$MEMCACHED" ]
+#   sudo docker run   -d -p 11211:11211 blackanger/memcached
+# fi
+
 # echo "--- mysql container addr and port:"
 # echo $DB_PORT_3306_TCP_ADDR
 # echo $DB_PORT_3306_TCP_PORT
