@@ -1,4 +1,4 @@
 dh_env
 ======
 
-DemoHour Ruby Env
+Vagrant + Docker Ruby Env
