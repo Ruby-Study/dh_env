@@ -19,6 +19,8 @@ Vagrant.configure("2") do |config|
   #mysql
   config.vm.network :forwarded_port, guest: 49153, host: 3306
 
+  #share folder
+  config.vm.synced_folder "./vagrant", "/vagrant_data"
 
   config.vm.provider :virtualbox do |vb|
     vb.gui = false
@@ -26,14 +28,16 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
+  # config.vm.provision :puppet do |puppet|
+    # puppet.manifests_path = 'puppet/manifests'
+    # puppet.module_path    = 'puppet/modules'
+  # end
+
   config.vm.provision "docker" do |d|
     d.pull_images "blackanger/my-mysql-server"
-    d.pull_images "blackanger/elasticsearch"
-    #d.pull_images "tutum/centos"
-
+    # d.pull_images "blackanger/elasticsearch"
     # build
-    d.build_image "/vagrant/dockfiles/centos", args: "-t blackanger/centos"
-    d.run "blackanger/centos"
+
   end
 
   config.vm.provision :shell, path: "bootstrap.sh"

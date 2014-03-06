@@ -2,7 +2,7 @@
 set -x
 set -e
 
-sudo apt-get update
+# sudo apt-get update
 
 if [ ! -e /usr/bin/git ]; then
   sudo apt-get install git -y
@@ -23,11 +23,11 @@ fi
 
 
 # init ElasticSearch
-ES=`sudo docker ps|grep blackanger/elasticsearch|awk '{print$1}'`
-if [ -z "$ES" ]; then
-  echo $ES
-  sudo docker run -d -p 9200:9200 -p 9300:9300 -name elastics blackanger/elasticsearch
-fi
+# ES=`sudo docker ps|grep blackanger/elasticsearch|awk '{print$1}'`
+# if [ -z "$ES" ]; then
+#   echo $ES
+#   sudo docker run -d -p 9200:9200 -p 9300:9300 -name elastics blackanger/elasticsearch
+# fi
 
 # echo "--- mysql container addr and port:"
 # echo $DB_PORT_3306_TCP_ADDR

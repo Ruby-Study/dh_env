@@ -1,5 +1,5 @@
 FROM ubuntu:quantal
-MAINTAINER Fernando Mayo <fernando@tutum.co>
+MAINTAINER blackanger <blackanger.z@gmail.com>
 
 # Install packages
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get -y install supervisor mysql-server pwgen

@@ -1,5 +1,5 @@
 # Base tutum/centos
-FROM centos
+FROM tutum/centos
 MAINTAINER blackanger <blackanger.z@gmail.com>
 
 # ruby env
@@ -18,12 +18,12 @@ RUN yum -y groupinstall --enablerepo=epel,remi "Development Tools"
 RUN yum -y install --enablerepo=epel,remi openssl-devel git sqlite sqlite-devel libyaml-devel libxslt-devel
 
 # setup rvm
-RUN \curl -sSL https://get.rvm.io | bash -s stable --ruby
-RUN rvm get head
-RUN rvm install ruby-2.1.1
-RUM rvm use 2.1.1 --default
-RUN gem install bundle --no-ri --no-rdoc
-RUN gem install goliath
+RUN \curl -L https://get.rvm.io | bash -s stable
+RUN /bin/bash -l -c "rvm requirements"
+RUN /bin/bash -l -c "rvm install 2.1.1"
+RUN /bin/bash -l -c "rvm use 2.1.1 --default"
+RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
+RUN /bin/bash -l -c "gem install goliath"
 
 
 # Configure my repo to use my custom Nginx with modsec
