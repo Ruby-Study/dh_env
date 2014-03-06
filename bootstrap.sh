@@ -9,6 +9,7 @@ if [ ! -e /usr/bin/git ]; then
 fi
 
 if [ ! -e /usr/bin/mysql ]; then
+  sudo apt-get install libmysql-ruby libmysqlclient-dev -v
   sudo apt-get install mysql-client -y
 fi
 
@@ -17,8 +18,7 @@ fi
 MYSQL=`sudo docker ps|grep blackanger/my-mysql-server|awk '{print$1}'`
 if [ -z "$MYSQL" ]; then
   echo $MYSQL
-  ID=$(sudo docker run -d -p 3306 -name mysql blackanger/my-mysql-server /run.sh)
-  sudo docker port $ID 3306
+  ID=$(sudo docker run -d -p 3306:3306 -name mysql blackanger/my-mysql-server /run.sh)
 fi
 
 
@@ -35,7 +35,7 @@ fi
 # init memcached
 # MEMCACHED=`sudo docker ps|grep blackanger/memcached|awk '{print$1}'`
 # if [ -z "$MEMCACHED" ]
-#   sudo docker run   -d -p 11211:11211 blackanger/memcached
+#   sudo docker run -d -p 11211:11211 -name memcached blackanger/memcached
 # fi
 
 # echo "--- mysql container addr and port:"

@@ -9,6 +9,8 @@ Vagrant.configure("2") do |config|
   #shipyard
   config.vm.network :forwarded_port, guest: 8005, host: 8005
 
+  #apps
+  config.vm.network :forwarded_port, guest: 3000, host: 3000
   #elasticsearch
   config.vm.network :forwarded_port, guest: 9200, host: 9200
   config.vm.network :forwarded_port, guest: 9300, host: 9300
