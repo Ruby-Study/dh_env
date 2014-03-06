@@ -28,10 +28,10 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
-  # config.vm.provision :puppet do |puppet|
-    # puppet.manifests_path = 'puppet/manifests'
+  config.vm.provision :puppet do |puppet|
+    puppet.manifests_path = 'puppet/manifests'
     # puppet.module_path    = 'puppet/modules'
-  # end
+  end
 
   config.vm.provision "docker" do |d|
     d.pull_images "blackanger/my-mysql-server"

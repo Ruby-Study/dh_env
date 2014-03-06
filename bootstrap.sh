@@ -22,6 +22,8 @@ if [ -z "$MYSQL" ]; then
 fi
 
 
+
+
 # init ElasticSearch
 # ES=`sudo docker ps|grep blackanger/elasticsearch|awk '{print$1}'`
 # if [ -z "$ES" ]; then
