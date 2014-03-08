@@ -28,6 +28,8 @@ Vagrant.configure("2") do |config|
     vb.gui = false
     #memory
     vb.customize ["modifyvm", :id, "--memory", "1024"]
+    # symlink don't work
+    # vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/", "1"]
   end
 
   config.vm.provision :puppet do |puppet|
@@ -40,7 +42,6 @@ Vagrant.configure("2") do |config|
     # d.pull_images "blackanger/elasticsearch"
     # d.pull_images "blackanger/memcached"
     # build
-
   end
 
   config.vm.provision :shell, path: "bootstrap.sh"
