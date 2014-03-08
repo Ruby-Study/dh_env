@@ -51,26 +51,10 @@ package { 'nodejs':
 }
 
 
-# --- Ruby ---------------------------------------------------------------------
+# --- RVM ---------------------------------------------------------------------
 
 exec { 'install_rvm':
   command => "${as_vagrant} 'curl -L https://get.rvm.io | bash -s stable'",
   creates => "${home}/.rvm/bin/rvm",
   require => Package['curl']
-}
-
-exec { 'install_ruby':
-  # We run the rvm executable directly because the shell function assumes an
-  # interactive environment, in particular to display messages or ask questions.
-  # The rvm executable is more suitable for automated installs.
-  #
-  # use a ruby patch level known to have a binary
-  command => "${as_vagrant} '${home}/.rvm/bin/rvm install ruby-2.0.0-p353 --binary --autolibs=enabled && rvm alias create default 2.0'",
-  creates => "${home}/.rvm/bin/ruby",
-  require => Exec['install_rvm']
-}
-
-exec { "${as_vagrant} 'gem install bundler --no-rdoc --no-ri'":
-  creates => "${home}/.rvm/bin/bundle",
-  require => Exec['install_ruby']
 }

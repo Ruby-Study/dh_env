@@ -33,11 +33,14 @@ fi
 
 
 # init memcached
-# MEMCACHED=`sudo docker ps|grep blackanger/memcached|awk '{print$1}'`
-# if [ -z "$MEMCACHED" ]
-#   sudo docker run -d -p 11211:11211 -name memcached blackanger/memcached
-# fi
+MEMCACHED=`sudo docker ps|grep blackanger/memcached|awk '{print$1}'`
+if [ -z "$MEMCACHED" ]; then
+  sudo docker run -d -p 11211:11211 -name memcached blackanger/memcached
+fi
 
-# echo "--- mysql container addr and port:"
-# echo $DB_PORT_3306_TCP_ADDR
-# echo $DB_PORT_3306_TCP_PORT
+# init Nginx
+NGINX=`ps -ef|grep nginx|awk '{print$2}'`
+if [ -z "NGINX" ]; then
+  sudo apt-get install nginx -y
+  sudo service nginx start
+fi
