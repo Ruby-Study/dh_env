@@ -6,6 +6,9 @@ Vagrant.configure("2") do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   # 1024 < port < 49151
+  #nginx
+  config.vm.network :forwarded_port, guest: 80, host: 8080
+
   #shipyard
   config.vm.network :forwarded_port, guest: 8005, host: 8005
 
