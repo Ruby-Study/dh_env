@@ -22,7 +22,7 @@ fi
 # init mysql server
 MYSQL=`sudo docker ps|grep blackanger/my-mysql-server|awk '{print$1}'`
 if [ -z "$MYSQL" ]; then
-  ID=$(sudo docker run -d -p 3306:49153 -name mysql blackanger/my-mysql-server /run.sh)
+  ID=$(sudo docker run -d -p 49153:3306 -name mysql blackanger/my-mysql-server /run.sh)
 fi
 
 
