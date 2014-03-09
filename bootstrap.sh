@@ -13,12 +13,16 @@ if [ ! -e /usr/bin/mysql ]; then
   sudo apt-get install mysql-client -y
 fi
 
+# init nginx
+if [ ! -e /usr/sbin/nginx ]; then
+  sudo apt-get install nginx -y
+fi
+
 
 # init mysql server
 MYSQL=`sudo docker ps|grep blackanger/my-mysql-server|awk '{print$1}'`
 if [ -z "$MYSQL" ]; then
-  echo $MYSQL
-  ID=$(sudo docker run -d -p 3306:3306 -name mysql blackanger/my-mysql-server /run.sh)
+  ID=$(sudo docker run -d -p 3306:49153 -name mysql blackanger/my-mysql-server /run.sh)
 fi
 
 
